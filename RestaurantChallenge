@@ -1,0 +1,111 @@
+import java.util.Scanner;
+
+public class RestaurantChallenge {
+	public static void main(String[] args) {
+		//total sum of all the orders
+		int totalSum=0;
+		//total count of all the items ordered
+		int totalCount=0;
+		
+	//assigning elements to the different categories
+	String [] appetizers={"cheese sticks", "salad","bread sticks", "onion rings", "wings"};
+	int [] aPrice = {5,8,5,6,7};
+	int [] aCount= new int[5];
+	
+	String [] entrees= {"chicken pasta", "mangu", "pizza", "hamburger", "bacon mac and cheese"};
+	int [] ePrice = {10,12,8,8,11};
+	int [] eCount= new int[5];
+	
+	String [] desserts={"tres leche cake","ice cream", "cheesecake", "brownie","apple pie"};
+	int [] dPrice= {6,4,8,7,3};
+	int [] dCount= new int[5];
+	
+	
+	
+	//asking for what type of food they want
+	String order;
+	for(int h = 0; h< 20;h++){
+	System.out.println("Hello thank you for coming to Your Mom's. We have appetizers, entrees and desserts. Please enter which you would like?");
+	Scanner input = new Scanner(System.in);
+	order = input.nextLine();
+	
+	 
+	// if they want an appetizer, they will be shown the appetizers available and asked which appetizer they want
+	if(order.equals("appetizers") || order.equals("APPETIZERS") || order.equals("appetizer")) {
+		System.out.println("Our appetizers are:");
+		for(int i=1; i< 6; i++) {
+			System.out.println(i+": "+appetizers[i-1]+" $"+ aPrice[i-1]);
+			
+			}
+		
+		System.out.println("Which number would you like?");
+		int orderNum = input.nextInt();
+		//adds to the total sum of all the orders
+		totalSum += aPrice[orderNum-1];
+		//adds to the number of times the specific item was ordered
+		aCount[orderNum-1]+=1;
+		//add to the total count of all the orders
+		totalCount++;
+		
+	}
+	// if they want an entree, they will be shown the entrees available and asked which one they want
+	if(order.equals("entrees") || order.equals("ENTREES") || order.equals("entree")) {
+		System.out.println("Our entrees are:");
+		for(int i=1; i< 6; i++) {
+			System.out.println(i+": "+entrees[i-1]+" $"+ ePrice[i-1]);
+			}
+		System.out.println("Which number would you like?");
+		int orderNum = input.nextInt();
+		//adds to the total sum of all the orders
+		totalSum += ePrice[orderNum-1];
+		//adds to the number of times the specific item was ordered
+		eCount[orderNum-1]+=1;
+		//add to the total count of all the orders
+		totalCount++;
+	}
+	// if they want an dessert, they will be shown the desserts available and asked which one they want
+	if(order.equals("desserts") || order.equals("DESSERTS") || order.equals("dessert")) {
+			System.out.println("Our desserts are:");
+			for(int i=1; i< 6; i++) {
+				System.out.println(i+": "+desserts[i-1]+" $"+ dPrice[i-1]);
+				}
+			System.out.println("Which number would you like?");
+			int orderNum = input.nextInt();
+			//adds to the total sum of all the orders
+			totalSum += dPrice[orderNum-1];
+			//adds to the number of times the specific item was ordered
+			dCount[orderNum-1]+=1;
+			//add to the total count of all the orders
+			totalCount++;
+		}
+	
+		
+	
+	}
+	System.out.println(" ");
+
+	System.out.println("This is the total sum: "+"$"+ totalSum);
+	
+	//prints out the items and number of times ordered and percentage of each
+	System.out.println("This is the total number of times each item was ordered and their percentages:");
+	//for appetizers
+	for(int j=0; j< 5; j++) {
+		double percent = Math.round((double)aCount[j]/totalCount*100);
+		System.out.println(appetizers[j]+ " "+aCount[j]+" "+(int)percent+"%");
+		}
+	//for entrees
+	for(int j=0; j< 5; j++) {
+		double percent = Math.round((double)eCount[j]/totalCount*100);
+		System.out.println(entrees[j]+ " "+eCount[j]+" "+(int)percent+"%");
+		}
+	//for desserts
+	for(int j=0; j< 5; j++) {
+		double percent = Math.round((double)dCount[j]/totalCount*100);
+		System.out.println(desserts[j]+ " "+dCount[j]+" "+(int)percent+"%");
+		}
+	
+	
+	
+	}
+
+}
